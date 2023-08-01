@@ -27,7 +27,7 @@ import useMediaRecorder from './hooks/useMediaRecorder';
 import useSpeechRecognition from './hooks/useSpeechRecognition'; 
 
 const App = () => {
-  const [preferredLanguage, setPreferredLanguage] = useState("English");
+  const [preferredLanguage, setPreferredLanguage] = useState("Spanish");
   const [selectedDevice, setSelectedDevice] = useState("");
   const [selectedModel, setSelectedModel] = useState("gpt-3.5-turbo-16k");
   const [useSearch, setUseSearch] = useState(false);
@@ -170,7 +170,7 @@ const App = () => {
       setIsCallView(false);
       setTextAreaValue("");
       setSelectedModel("gpt-3.5-turbo-16k");
-      setPreferredLanguage("English");
+      setPreferredLanguage("Spanish");
 
       // close web socket connection
       closeSocket();

@@ -219,6 +219,7 @@ function speechRecognition() {
   // Initialize SpeechRecognition
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   recognition = new SpeechRecognition();
+  recognition.lang = "es-ES";
   recognition.interimResults = true;
   recognition.maxAlternatives = 1;
   recognition.continuous = true;

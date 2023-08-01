@@ -60,7 +60,7 @@ async def websocket_endpoint(websocket: WebSocket,
                              api_key: str = Query(None),
                              llm_model: str = Query(default=os.getenv(
                                  'LLM_MODEL_USE', 'gpt-3.5-turbo-16k')),
-                             language: str = Query(default='en-US'),
+                             language: str = Query(default='es-ES'),
                              token: str = Query(None),
                              character_id: str = Query(None),
                              platform: str = Query(None),
@@ -197,6 +197,7 @@ async def handle_receive(websocket: WebSocket, client_id: int, user_id: str, db:
             data = await websocket.receive()
             if data['type'] != 'websocket.receive':
                 raise WebSocketDisconnect('disconnected')
+            logger.info(str(data))
             # handle text message
             if 'text' in data:
                 msg_data = data['text']
@@ -261,6 +262,7 @@ async def handle_receive(websocket: WebSocket, client_id: int, user_id: str, db:
             elif 'bytes' in data:
                 binary_data = data['bytes']
                 # 1. Transcribe audio
+                logger.info("transcribing audio here")
                 transcript: str = speech_to_text.transcribe(
                     binary_data, platform=platform,
                     prompt=character.name).strip()
